@@ -1,2 +1,1 @@
-# Presence-detection
-Presence-detection installation guide
+Presence-detection instructions
