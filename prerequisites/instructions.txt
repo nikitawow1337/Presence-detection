@@ -17,6 +17,8 @@ Further OS basic instructions:
 ** https://youness.net/raspberry-pi/bluetooth-headset-raspberry-pi
 
 Enabling remote connecting to desktop:
+* apt-get install xrdp
+* reboot
 * sudo raspi-config
 * 5 Interfacing Options
 * P2 SSH
