@@ -81,4 +81,11 @@ find /usr/local/lib/ -type f -name "cv2*.so"
 # if nothing was fonud do this command, depends what version of Python is used
 cp cv2.so /usr/local/lib
 
-
+Running examples:
+first example
+cd Presence-detection/examples
+python example1.py
+second example
+git clone https://github.com/opencv/opencv
+cp opencv/data/haarcascades/haarcascade_frontalface_default.xml Presence-detection/examples/
+python example2.py
