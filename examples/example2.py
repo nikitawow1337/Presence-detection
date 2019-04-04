@@ -1,4 +1,4 @@
-
+# example2.py face detection using haar faceCascade
 # https://realpython.com/face-detection-in-python-using-a-webcam/
 
 import cv2
