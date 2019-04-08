@@ -90,7 +90,7 @@ git clone https://github.com/opencv/opencv
 cp opencv/data/haarcascades/haarcascade_frontalface_default.xml Presence-detection/examples/
 python example2.py
 
-Required libraries:
+Installing required libraries:
 # install it through pip3 install (except face_recognition and vlc that will be described later)
 import face_recognition 
 import time 
@@ -105,6 +105,25 @@ import cv2
 import os 
 import argparse 
 import datetime
+
+Installing face_recognition:
+# helpful link:
+https://gist.github.com/ageitgey/1ac8dbe8572f3f533df6269dab35df65
+# seems that it works only on latest Raspbian Jessie Light
+sudo raspi-config -> Advanced -> gpu memory split -> 16
+# enable a larger swap file to size
+sudo nano /etc/dphys-swapfile
+change variable: CONF_SWAPSIZE=1024
+# restart swap to make it enabled
+sudo /etc/init.d/dphys-swapfile restart
+# install dlib
+mkdir dlib
+git clone -b 'v19.6' --single-branch https://github.com/davisking/dlib.git dlib/
+cd ./dlib
+sudo python3 setup.py install --compiler-flags "-mfpu=neon"
+# install face_recognition
+sudo pip3 install face_recognition
+# change swapfile and gpu to default settings
 
 Installing vlc:
 # install vlc in system
