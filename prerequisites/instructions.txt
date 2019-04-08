@@ -29,6 +29,16 @@ Enabling remote connecting to desktop:
 * Copy ip addr that is address for device
 * Paste on your machine (SSH, Remote Microsoft Windows Connection with inrerface)
 
+Git commands:
+cd Desktop
+mkdir mygithub
+sudo apt-get install git
+git clone https://github.com/nikitawow1337/Presence-detection
+cd Presence-detection
+git config user.name test123
+git config user.email test123@gmail.com
+git config credential.helper store
+
 Before installing OpenCV:
 # better to follow guide https://www.learnopencv.com/install-opencv3-on-ubuntu/
 
