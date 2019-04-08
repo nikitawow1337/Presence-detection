@@ -90,6 +90,22 @@ git clone https://github.com/opencv/opencv
 cp opencv/data/haarcascades/haarcascade_frontalface_default.xml Presence-detection/examples/
 python example2.py
 
+Required libraries:
+# install it through pip3 install (except face_recognition and vlc that will be described later)
+import face_recognition 
+import time 
+import threading 
+from gtts import gTTS 
+import vlc 
+import random 
+import sys 
+from imutils import paths 
+import pickle 
+import cv2 
+import os 
+import argparse 
+import datetime
+
 Installing vlc:
 # install vlc in system
 sudo apt-get install vlc
