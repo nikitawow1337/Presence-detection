@@ -135,6 +135,13 @@ sudo python3 setup.py install --compiler-flags "-mfpu=neon"
 sudo pip3 install face_recognition
 # change swapfile and gpu to default settings
 
+Installing PulseAudio:
+sudo apt-get remove --purge alsa-base pulseaudio
+sudo apt-get install alsa-base pulseaudio
+sudo apt-get -f install && sudo apt-get -y autoremove && sudo apt-get autoclean && sudo apt-get clean
+sudo reboot
+pulseaudio --start
+
 Installing vlc:
 # install vlc in system
 sudo apt-get install vlc
