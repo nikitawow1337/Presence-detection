@@ -1,0 +1,1 @@
+Directory for captured faces on script (in more details)
