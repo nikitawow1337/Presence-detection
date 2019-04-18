@@ -29,6 +29,13 @@ Enabling remote connecting to desktop:
 * Copy ip addr that is address for device
 * Paste on your machine (SSH, Remote Microsoft Windows Connection with inrerface)
 
+Installing TeamViewer:
+wget http://download.teamviewer.com/download/linux/version_11x/teamviewer-host_armhf.deb
+sudo apt update
+sudo apt install ./teamviewer-host_armhf.deb
+** https://community.teamviewer.com/t5/TeamViewer-IoT-Support/Teamviewer-12-for-Raspberry-Pi/td-p/27312
+
+
 Git commands:
 cd Desktop
 mkdir mygithub
