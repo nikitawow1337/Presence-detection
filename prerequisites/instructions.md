@@ -1,42 +1,63 @@
-Raspberry Pi OS installation:
-* Go to https://www.raspberrypi.org/downloads/raspbian/
-* Download Raspbian Stretch with desktop and recommended software (as example)
-* Unpack it
-* Download Win32 Disk Imager or ODIN https://sourceforge.net/projects/win32diskimager/
-* Upload image of SD-card
-* Put SD-card in device and run
+# Raspberry Pi OS installation:
+1. Go to https://www.raspberrypi.org/downloads/raspbian/
+2. Download Raspbian Stretch with desktop and recommended software (as example)
+3. Unpack it
+4. Download Win32 Disk Imager or ODIN https://sourceforge.net/projects/win32diskimager/
+5. Upload image of SD-card
+6. Put SD-card in device and run
 
-Further OS basic instructions:
-* sudo su
-* raspi-config
-* apt-get update
-* apt-get upgrade
-* apt-get autoremove
-* for audio:
-** https://www.raspberrypi.org/documentation/configuration/audio-config.md
-** https://youness.net/raspberry-pi/bluetooth-headset-raspberry-pi
+## Further OS basic instructions:
+```bash
+sudo su
+raspi-config
+apt-get update
+apt-get upgrade
+apt-get autoremove
+```
 
-Enabling remote connecting to desktop:
-* apt-get install xrdp
-* reboot
-* sudo raspi-config
-* 5 Interfacing Options
-* P2 SSH
-* Yes
-* P1 Camera for Camera socket on device
+## For audio:
+1. [Audio configuration](https://www.raspberrypi.org/documentation/configuration/audio-config.md)
+2. [Connect bluetooth devices](https://youness.net/raspberry-pi/bluetooth-headset-raspberry-pi)
 
-* ifconfig in command line
-* Copy ip addr that is address for device
-* Paste on your machine (SSH, Remote Microsoft Windows Connection with inrerface)
+## Enabling remote connecting to desktop:
+```bash
+sudo apt-get install ssh
+sudo apt-get install xrdp
+# reboot
 
-Installing TeamViewer:
+sudo /etc/init.d/ssh start
+sudo /etc/init.d/xrdp start
+
+sudo raspi-config
+##  5 Interfacing Options
+## P2 SSH
+## Yes
+## P1 Camera for Camera socket on device
+```
+
+## Auto wlan0:
+```bash
+sudo nano /etc/network/interfaces
+
+
+```
+
+## Get device address:
+1. ifconfig in command line
+2. Copy ip addr that is address for device
+3. Paste on your machine (SSH, Remote Microsoft Windows Connection with inrerface)
+
+## [Installing TeamViewer](https://community.teamviewer.com/t5/TeamViewer-IoT-Support/Teamviewer-12-for-Raspberry-Pi/td-p/27312):
+```bash
 wget http://download.teamviewer.com/download/linux/version_11x/teamviewer-host_armhf.deb
+
 sudo apt update
+
 sudo apt install ./teamviewer-host_armhf.deb
-** https://community.teamviewer.com/t5/TeamViewer-IoT-Support/Teamviewer-12-for-Raspberry-Pi/td-p/27312
+```
 
-
-Git commands:
+## Git commands:
+```bash
 cd Desktop
 mkdir mygithub
 sudo apt-get install git
@@ -45,10 +66,14 @@ cd Presence-detection
 git config user.name test123
 git config user.email test123@gmail.com
 git config credential.helper store
+```
 
-Before installing OpenCV:
-# better to follow guide https://www.learnopencv.com/install-opencv3-on-ubuntu/
+## Install OpenCV:
+Better to follow [the guide](https://www.learnopencv.com/install-opencv3-on-ubuntu/)
 
+
+
+```bash
 # ~21 3.5 12.3 170 48 1.4 1 2 4 MB
 sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev
 sudo apt-get install libxine2-dev libv4l-dev
@@ -59,13 +84,17 @@ sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev
 sudo apt-get install libvorbis-dev libxvidcore-dev
 sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev
 sudo apt-get install x264 v4l-utils
+```
 
-# install python libraries
+# Install python libraries
+```bash
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 sudo -H pip2 install -U pip numpy
 sudo -H pip3 install -U pip numpy
+```
 
-Installing OpenCV:
+Install OpenCV:
+```bash
 # installing most libraries that are not in system; some of libraries can have different name
 sudo apt-get -y install build-essential cmake cmake-qt-gui pkg-config libpng12-0 libpng12-dev libpnglite-dev zlib1g-dbg zlib1g zlib1g-dev pngtools libtiff4 libtiffxx0c2 libtiff-tools
 # downloading OpenCV from sourceforge, latest version (30.3.2019)
@@ -97,17 +126,25 @@ sudo ldconfig
 find /usr/local/lib/ -type f -name "cv2*.so"
 # if nothing was fonud do this command, depends what version of Python is used
 cp cv2.so /usr/local/lib
+```
 
-Running examples:
-first example
+## Running examples
+
+First example:
+```bash
 cd Presence-detection/examples
 python example1.py
-second example
+```
+
+Second example:
+```
 git clone https://github.com/opencv/opencv
 cp opencv/data/haarcascades/haarcascade_frontalface_default.xml Presence-detection/examples/
 python example2.py
+```
 
-Installing required libraries:
+## Install required libraries for face_recognition:
+```python
 # install it through pip3 install (except face_recognition and vlc that will be described later)
 import face_recognition 
 import time 
@@ -122,10 +159,11 @@ import cv2
 import os 
 import argparse 
 import datetime
+```
 
-Installing face_recognition:
-# helpful link:
-https://gist.github.com/ageitgey/1ac8dbe8572f3f533df6269dab35df65
+## Install [face_recognition](https://gist.github.com/ageitgey/1ac8dbe8572f3f533df6269dab35df65):
+```bash
+
 # seems that it works only on latest Raspbian Jessie Light
 sudo raspi-config -> Advanced -> gpu memory split -> 16
 # enable a larger swap file to size
@@ -141,15 +179,19 @@ sudo python3 setup.py install --compiler-flags "-mfpu=neon"
 # install face_recognition
 sudo pip3 install face_recognition
 # change swapfile and gpu to default settings
+```
 
-Installing PulseAudio:
+## Install PulseAudio:
+```bash
 sudo apt-get remove --purge alsa-base pulseaudio
 sudo apt-get install alsa-base pulseaudio
 sudo apt-get -f install && sudo apt-get -y autoremove && sudo apt-get autoclean && sudo apt-get clean
 sudo reboot
 pulseaudio --start
+```
 
-Installing vlc:
+## Install vlc:
+```bash
 # install vlc in system
 sudo apt-get install vlc
 # install python-vlc in python enviroment, do not install vlc (pip install vlc)!
@@ -160,8 +202,10 @@ import vlc
 vlc_instance = vlc.Instance()
 player = vlc_instance.media_player_new()
 # must be no errors
+```
 
-Installing vlc manually (if previous case doesn't work):
+## Install vlc manually (if previous case doesn't work):
+```bash
 # helpful links:
 https://thepi.io/how-to-compile-vlc-media-player-with-hardware-acceleration-for-the-raspberry-pi/
 https://github.com/matthiasbock/Mini-Xplus-Firmware/issues/20
@@ -185,7 +229,9 @@ CFLAGS="-I/opt/vc/include/ -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/i
 make -j4
 # make install
 make install
+```
 
-Issues:
- # libjasper.so.1: cannot open shared object file: No such file or directory
+## Possible bugs/errors:
+ libjasper.so.1: cannot open shared object file: No such file or directory.
+
  Solution: https://github.com/amymcgovern/pyparrot/issues/34
