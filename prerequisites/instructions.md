@@ -1,6 +1,6 @@
 # Raspberry Pi OS installation:
-1. Go to https://www.raspberrypi.org/downloads/raspbian/
-2. Download Raspbian Stretch with desktop and recommended software (as example)
+1. Go to https://www.raspberrypi.org/downloads/raspbian/ or https://www.raspberrypi.org/software/
+2. Download Raspbian Stretch with desktop and recommended software (as example) or download Imager
 3. Unpack it
 4. Download Win32 Disk Imager or ODIN https://sourceforge.net/projects/win32diskimager/
 5. Upload image of SD-card
