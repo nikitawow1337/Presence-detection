@@ -6,6 +6,7 @@
 import cv2
 
 cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture("http://admin:admin@192.168.31.129/video/mjpg.cgi?profileid=3")
 
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
