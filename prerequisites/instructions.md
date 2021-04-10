@@ -28,6 +28,9 @@ sudo apt-get install xrdp
 sudo /etc/init.d/ssh start
 sudo /etc/init.d/xrdp start
 
+# Start ssh on startup
+sudo systemctl enable ssh
+
 sudo raspi-config
 ##  5 Interfacing Options
 ## P2 SSH
